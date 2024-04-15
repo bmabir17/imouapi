@@ -427,14 +427,14 @@ class ImouAPIClient:
         # call the api
         return await self._async_call_api(api, payload)
 
-    async def async_api_setMessageCallbackOn(self, callback_url: str) -> dict:  # pylint: disable=invalid-name
+    async def async_api_setMessageCallbackOn(self, callback_url: str,callback_flag: str = "alarm,deviceStatus") -> dict:  # pylint: disable=invalid-name
         """Set the message callback address. \
             (https://open.imoulife.com/book/http/push/setMessageCallback.html)."""
         # define the api endpoint
         api = "setMessageCallback"
         # prepare the payload
         payload = {
-            "callbackFlag": "alarm,deviceStatus",
+            "callbackFlag": callback_flag,
             # "basePush": "2",
             "callbackUrl": callback_url,
             "status": "on",
